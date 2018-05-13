@@ -1,0 +1,13 @@
+Install Vagrant from www.vagrant.com
+
+Install vagrant-disksize plugin:
+
+vagrant plugin install vagrant-disksize
+
+Check Vagrantfile, interfaces files and hosts file
+
+Create "VirtualBox Host-Only Ethernet Adapter #2" and "ProviderNetwork1".
+
+Provision VMs:
+
+vagrant up
