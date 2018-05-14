@@ -8,17 +8,6 @@ apt-get update -y
 apt-get install google-chrome-stable -y
 apt-get install -y vim glances crudini curl
 apt-get install -y qemu-kvm libvirt-bin bridge-utils
-# Set-up LVM for cinder-volumes
-lvcreate -L 100GB --name cinder-vol ubuntu-vg
-pvcreate /dev/ubuntu-vg/cinder-vol
-vgcreate cinder-volumes /dev/ubuntu-vg/cinder-vol
-echo "configfs" >> /etc/modules
-update-initramfs -u
-systemctl daemon-reload
-systemctl stop open-iscsi
-systemctl disable open-iscsi
-systemctl stop iscsid
-systemctl disable iscsid
 
 cat << 'EOF' >> /etc/network/interfaces
 
@@ -41,4 +30,17 @@ pip install -U pip
 crudini --set /etc/default/grub "" GRUB_CMDLINE_LINUX '"net.ifnames=0 biosdevname=0"'
 update-grub
 apt upgrade -y
+
+# Set-up LVM for cinder-volumes
+lvcreate -L 100GB --name cinder-vol ubuntu-vg
+pvcreate /dev/ubuntu-vg/cinder-vol
+vgcreate cinder-volumes /dev/ubuntu-vg/cinder-vol
+echo "configfs" >> /etc/modules
+update-initramfs -u
+systemctl daemon-reload
+systemctl stop open-iscsi
+systemctl disable open-iscsi
+systemctl stop iscsid
+systemctl disable iscsid
+
 reboot
