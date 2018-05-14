@@ -7,7 +7,7 @@ echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sud
 apt-get update -y
 apt-get install google-chrome-stable -y
 apt-get install -y vim glances crudini curl
-apt-get install -y kvm libvirt-bin
+apt-get install -y qemu-kvm libvirt-bin bridge-utils
 # Set-up LVM for cinder-volumes
 lvcreate -L 100GB --name cinder-vol ubuntu-vg
 pvcreate /dev/ubuntu-vg/cinder-vol
