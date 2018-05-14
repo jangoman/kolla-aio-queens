@@ -12,4 +12,3 @@ cd kolla-aio-queens
 bash host-setup.sh
 
 # Host reboots now
-
