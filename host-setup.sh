@@ -6,7 +6,7 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
 apt-get update -y
 apt-get install google-chrome-stable -y
-apt-get install -y vim glances crudini
+apt-get install -y vim glances crudini curl
 # Set-up LVM for cinder-volumes
 lvcreate -L 100GB --name cinder-vol ubuntu-vg
 pvcreate /dev/ubuntu-vg/cinder-vol
