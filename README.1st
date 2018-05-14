@@ -12,3 +12,6 @@ cd kolla-aio-queens
 bash host-setup.sh
 
 # Host reboots now
+
+# Verify Network configuration, eth0 should have 10.0.0.11 address and be UP, eth1 no address and be UP:
+ip a
