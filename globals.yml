@@ -18,7 +18,7 @@ kolla_base_distro: "centos"
 kolla_install_type: "binary"
 
 # Valid option is Docker repository tag
-openstack_release: "queens"
+openstack_release: "pike"
 
 # Location of configuration overrides
 #node_custom_config: "/etc/kolla/config"
