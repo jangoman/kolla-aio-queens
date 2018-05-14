@@ -33,6 +33,8 @@ iface eth1 inet manual
   down ip link set dev eth1 down
 EOF
 
+cp hosts /etc/hosts
+
 apt-get install python-jinja2 python-pip libssl-dev -y
 pip install -U pip
 crudini --set /etc/default/grub "" GRUB_CMDLINE_LINUX '"net.ifnames=0 biosdevname=0"'
