@@ -1,13 +1,15 @@
-Install Vagrant from www.vagrant.com
-
-Install vagrant-disksize plugin:
-
-vagrant plugin install vagrant-disksize
-
-Check Vagrantfile, interfaces files and hosts file
-
-Create "VirtualBox Host-Only Ethernet Adapter #2" and "ProviderNetwork1".
-
-Provision VMs:
-
-vagrant up
+Install Ubuntu Desktop 16.04 LTS
+Use entire disk for Linux and Use LVM to install.
+Boot installation media again, select Try Ubuntu.
+Open Terminal window and run:
+sudo su
+lvreduce -r -L 150GB /dev/ubuntu-vg/root
+Reboot and remove Installation Media
+Open Terminal and run:
+sudo su
+echo "kris ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+apt update
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+apt-get update
+apt-get install google-chrome-stable
