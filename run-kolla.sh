@@ -13,6 +13,17 @@ cp globals.yml /etc/kolla
 
 kolla-genpwd
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one bootstrap-servers
+
+mkdir -p /etc/systemd/system/docker.service.d
+cat << 'EOF' > /etc/systemd/system/docker.service.d/kolla.conf
+[Service]
+MountFlags=shared
+ExecStart=
+ExecStart=/usr/bin/docker daemon -H fd:// --mtu 1400
+EOF
+systemctl daemon-reload
+systemctl restart docker
+
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one pull
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one prechecks
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one deploy
