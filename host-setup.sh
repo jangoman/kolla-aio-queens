@@ -40,4 +40,5 @@ pip install -U pip
 crudini --set /etc/default/grub "" GRUB_CMDLINE_LINUX '"net.ifnames=0 biosdevname=0"'
 update-grub
 apt-get install -y kvm
+apt upgrade -y
 reboot
