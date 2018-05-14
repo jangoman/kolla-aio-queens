@@ -10,6 +10,7 @@ cp globals.yml /etc/kolla
 # vim /etc/kolla/globals.yml
 # ifconfig
 # ip a
+pip install python-openstackclient
 
 kolla-genpwd
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one bootstrap-servers
@@ -29,7 +30,6 @@ kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one pre
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one deploy
 docker ps -a
 kolla-ansible post-deploy
-pip install python-openstackclient
 cp init-runonce /usr/local/share/kolla-ansible/init-runonce
 . /etc/kolla/admin-openrc.sh
 cd /usr/local/share/kolla-ansible
