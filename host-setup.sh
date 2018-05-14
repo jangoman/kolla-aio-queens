@@ -39,6 +39,6 @@ apt-get install python-jinja2 python-pip libssl-dev -y
 pip install -U pip
 crudini --set /etc/default/grub "" GRUB_CMDLINE_LINUX '"net.ifnames=0 biosdevname=0"'
 update-grub
-apt-get install -y kvm
+apt-get install -y kvm libvirt-bin
 apt upgrade -y
 reboot
