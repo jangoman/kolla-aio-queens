@@ -7,6 +7,7 @@ echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sud
 apt-get update -y
 apt-get install google-chrome-stable -y
 apt-get install -y vim glances crudini curl
+apt-get install -y kvm libvirt-bin
 # Set-up LVM for cinder-volumes
 lvcreate -L 100GB --name cinder-vol ubuntu-vg
 pvcreate /dev/ubuntu-vg/cinder-vol
@@ -39,6 +40,5 @@ apt-get install python-jinja2 python-pip libssl-dev -y
 pip install -U pip
 crudini --set /etc/default/grub "" GRUB_CMDLINE_LINUX '"net.ifnames=0 biosdevname=0"'
 update-grub
-apt-get install -y kvm libvirt-bin
 apt upgrade -y
 reboot
