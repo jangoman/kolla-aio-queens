@@ -5,7 +5,7 @@ pip install ansible==2.5.2
 pip install kolla-ansible==6.0.0
 
 cp -r /usr/local/share/kolla-ansible/etc_examples/kolla /etc/kolla
-cp /home/vagrant/kolla/globals.yml /etc/kolla
+cp globals.yml /etc/kolla
 
 # vim /etc/kolla/globals.yml
 # ifconfig
@@ -19,7 +19,7 @@ kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one dep
 docker ps -a
 kolla-ansible post-deploy
 pip install python-openstackclient
-cp /home/vagrant/kolla/init-runonce /usr/local/share/kolla-ansible/init-runonce
+cp init-runonce /usr/local/share/kolla-ansible/init-runonce
 . /etc/kolla/admin-openrc.sh
 cd /usr/local/share/kolla-ansible
 ./init-runonce
