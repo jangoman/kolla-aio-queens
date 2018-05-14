@@ -7,11 +7,21 @@ lvreduce -r -L 150GB /dev/ubuntu-vg/root
 Reboot and remove Installation Media
 Open Terminal and run:
 sudo su
+apt install git -y
 git clone https://github.com/kris-at-occ/kolla-aio-queens
 cd kolla-aio-queens
 bash host-setup.sh
 
 # Host reboots now
 
+Open Terminal and run:
+
+sudo su
+
 # Verify Network configuration, eth0 should have 10.0.0.11 address and be UP, eth1 no address and be UP:
 ip a
+
+# Run kolla-ansible installation script
+
+cd kolla-aio-queens
+bash run-kolla.sh
