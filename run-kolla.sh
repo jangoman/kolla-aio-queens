@@ -6,12 +6,7 @@ pip install kolla-ansible==6.0.0
 
 cp -r /usr/local/share/kolla-ansible/etc_examples/kolla /etc/kolla
 cp /home/vagrant/kolla/globals.yml /etc/kolla
-mkdir -p /etc/kolla/config/nova
-cat << EOF > /etc/kolla/config/nova/nova-compute.conf
-[libvirt]
-virt_type = qemu
-cpu_mode = none
-EOF
+
 # vim /etc/kolla/globals.yml
 # ifconfig
 # ip a
