@@ -13,9 +13,9 @@ IMAGE_NAME=cirros
 IMAGE_TYPE=linux
 
 # This EXT_NET_CIDR is your public network,that you want to connect to the internet via.
-EXT_NET_CIDR='192.168.1.0/24'
-EXT_NET_RANGE='start=192.168.1.220,end=192.168.1.239'
-EXT_NET_GATEWAY='192.168.1.1'
+EXT_NET_CIDR='203.0.113.0/24'
+EXT_NET_RANGE='start=203.0.113.120,end=203.0.113.239'
+EXT_NET_GATEWAY='203.0.113.1'
 
 # Sanitize language settings to avoid commands bailing out
 # with "unsupported locale setting" errors.
