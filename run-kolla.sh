@@ -1,5 +1,7 @@
 #! /bin/sh
 
+export LC_ALL=C
+
 pip install ansible==2.5.2
 
 pip install kolla-ansible==6.0.0
