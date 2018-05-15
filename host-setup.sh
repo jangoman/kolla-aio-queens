@@ -11,13 +11,18 @@ apt-get install -y qemu-kvm libvirt-bin bridge-utils
 
 cat << 'EOF' >> /etc/network/interfaces
 
+auto eth0
+iface eth0 inet static
+  address 10.0.0.11
+  netmask 255.255.255.0
+  gateway 10.0.0.1
+  dns-nameservers 8.8.8.8
+
 auto eth1
 iface eth1 inet manual
   up ip link set dev eth1 up
   down ip link set dev eth1 down
 EOF
-
-cp hosts /etc/hosts
 
 apt-get install python-jinja2 python-pip libssl-dev -y
 pip install -U pip
