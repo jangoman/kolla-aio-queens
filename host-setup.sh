@@ -26,8 +26,8 @@ update-grub
 apt upgrade -y
 
 # Set-up LVM for cinder-volumes
-pvcreate /dev/vdb
-vgcreate cinder-volumes /dev/vdb
+pvcreate /dev/vda
+vgcreate cinder-volumes /dev/vda
 echo "configfs" >> /etc/modules
 update-initramfs -u
 systemctl daemon-reload
