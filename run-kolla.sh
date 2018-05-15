@@ -6,7 +6,8 @@ pip install ansible==2.5.2
 
 pip install kolla-ansible==6.0.0
 
-cp -r /usr/local/share/kolla-ansible/etc_examples/kolla /etc/kolla
+mkdir -p /etc/kolla
+cp -r /usr/local/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
 cp globals.yml /etc/kolla
 
 # vim /etc/kolla/globals.yml
