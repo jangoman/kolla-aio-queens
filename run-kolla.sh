@@ -18,6 +18,11 @@ pip install python-openstackclient
 kolla-genpwd
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one bootstrap-servers
 
+if [ $? -ne 0 ]; then
+  echo "Bootstrap Servers failed!"
+  exit 1
+fi  
+
 mkdir -p /etc/systemd/system/docker.service.d
 cat << 'EOF' > /etc/systemd/system/docker.service.d/kolla.conf
 [Service]
@@ -29,8 +34,20 @@ systemctl daemon-reload
 systemctl restart docker
 
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one pull
+
+if [ $? -ne 0 ]; then
+  echo "Pull failed!"
+  exit 1
+fi 
+
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one prechecks
 kolla-ansible -i /usr/local/share/kolla-ansible/ansible/inventory/all-in-one deploy
+
+if [ $? -ne 0 ]; then
+  echo "Deploy failed!"
+  exit 1
+fi 
+
 docker ps -a
 kolla-ansible post-deploy
 cp init-runonce /usr/local/share/kolla-ansible/init-runonce
