@@ -11,12 +11,6 @@ apt-get install -y qemu-kvm libvirt-bin bridge-utils
 
 cat << 'EOF' >> /etc/network/interfaces
 
-auto eth0
-iface eth0 inet static
-  address 10.0.0.11
-  netmask 255.255.255.0
-  dns-nameservers 8.8.8.8
-
 auto eth1
 iface eth1 inet manual
   up ip link set dev eth1 up
@@ -32,9 +26,8 @@ update-grub
 apt upgrade -y
 
 # Set-up LVM for cinder-volumes
-lvcreate -L 100GB --name cinder-vol ubuntu-vg
-pvcreate /dev/ubuntu-vg/cinder-vol
-vgcreate cinder-volumes /dev/ubuntu-vg/cinder-vol
+pvcreate /dev/vdb
+vgcreate cinder-volumes /dev/vdb
 echo "configfs" >> /etc/modules
 update-initramfs -u
 systemctl daemon-reload
